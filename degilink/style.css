@@ -1,0 +1,603 @@
+@charset "UTF-8";
+/*
+Theme Name: Degi-Link.
+Description: Degi-Linkオリジナルテーマ
+Author: k.sato 
+Version: 1.0.0
+*/
+
+html{
+  font-size: 62.5%; /* 16px * 62.5% = 10px */
+  color: #333333;
+  width: 100%;
+  box-sizing: border-box;
+}
+body{
+  font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif;
+}
+
+main{
+  background-color: #E9EEEF;
+}
+li {
+  list-style: none; 
+}
+a {
+  font-size: 100%;
+  vertical-align: text-top;
+  color: #333333;
+  text-decoration: none; 
+}
+img {
+  vertical-align: bottom;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto; 
+}
+
+.gnav {
+  position: fixed;
+  z-index: -1;
+  opacity: 0; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; 
+  background: #F7F7F5;
+  /*動き*/
+  display: none;
+  transition: all 0.3s;
+}
+.gnav.panelactive {
+  opacity: 1;
+  z-index: 999;
+  display: block;
+}
+/*ナビゲーションの縦スクロール*/
+.gnav.panelactive #g-nav-list {
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999;
+  height: 100vh; /*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/*ナビゲーション*/
+#g-nav-list {
+  display: none;
+  z-index: 999;
+}
+.gnav.panelactive #g-nav-list{
+  display: block;
+}
+.gnav li {
+  color: #333;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  list-style: none;
+}
+#g-nav-list{
+  width: 100%;
+  padding: 100px 0;
+  box-sizing: border-box;
+}
+.gnav h3{
+  font-size: 2.0rem;
+  color: #333333;
+  padding-bottom: 10px;
+}
+.gnav ul{
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+}
+.gnav li{
+  font-size: 1.4rem;
+  box-sizing: border-box;
+}
+.gnav label{
+  padding: 10px;
+}
+.nav-box{
+  margin: 0 70px;
+}
+.searchandfilter ul > li > ul:not(.children) {
+  margin-left: auto;
+}
+.searchandfilter ul li{
+  width: 100%;
+  padding: 20px 0;
+  border-bottom: 1px solid #D0CECE;
+}
+.searchandfilter ul li li{
+  width: 25%;
+  padding: 0px;
+  border: 0;
+}
+.searchandfilter h4{
+  font-size: 2.0rem;
+  margin: 0 0 10px;
+}
+.searchandfilter ul li h4:first-child{
+  border: 0;
+}
+.searchandfilter ul li:last-child{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  width: auto;
+  border: 0px;
+  padding: 0;
+}
+.searchandfilter input{
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  writing-mode: vertical-rl;
+  background-color: #2A5E72;
+  border: 0;
+  border-radius: 10px 0 0 10px;
+  padding: 50px 15px;
+}
+.searchandfilter input:hover{
+  background-color: #FFE15B;
+  color: #2A5E72;
+}
+.searchandfilter ul li li:last-child{
+  position: static;
+}
+/*========= ボタンのためのCSS ===============*/
+.openbtn {
+  position: fixed;
+  z-index: 9999; 
+  top: 3%;
+  right: 3%;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}
+/*×に変化*/
+.openbtn span {
+  display: inline-block;
+  transition: all .4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: #FFE15B;
+  width: 45%;
+}
+.openbtn span:nth-of-type(1) {
+  top: 15px;
+}
+.openbtn span:nth-of-type(2) {
+  top: 23px;
+}
+.openbtn span:nth-of-type(3) {
+  top: 31px;
+}
+.openbtn.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+  background-color: #333333;
+}
+.openbtn.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.openbtn.active span:nth-of-type(3) {
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+  background-color: #333333;
+}
+@media(max-width:1000px){
+  .searchandfilter ul li li{
+    width: 33.3%;
+  }
+  .nav-box{
+    margin: 0 25px;
+  }
+}
+@media(max-width:800px){
+  .openbtn{
+    top: 1.5%;
+  }
+  .searchandfilter ul li:last-child{
+    top: 15%;
+  }
+}
+@media(max-width:768px){
+  .searchandfilter ul li li{
+    width: 50%;
+    padding: 0 0 5px;
+  }
+  .searchandfilter ul li:last-child{
+    top: 18%;
+  }
+.searchandfilter input{
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 30px 10px;
+  }
+}
+@media(max-width:500px){
+  .searchandfilter ul li li{
+    width: 100%;
+  }
+  .gnav h3{
+    font-size: 1.6rem;
+  }
+  #g-nav-list{
+    padding: 70px 0;
+    margin: 0;
+  }
+  .searchandfilter ul li:last-child{
+    top: 25%;
+  }
+}
+
+/*---------------------------------------------------------------------------------------*/
+
+.header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #2A5E72;
+  color: #FFFFFF;
+  padding: 35px 100px;
+  box-sizing: border-box;
+  z-index: 100;
+}
+.header h1{
+  font-size: 2.6rem;
+  margin: auto 0;
+  color: #FFFFFF;
+}
+.mainvisual{
+  display: flex;
+  justify-content: space-between;
+  padding: 170px 0 50px;
+  border-bottom: 1px solid #D0CECE;
+  margin: 0 100px 100px;
+}
+.mainvisual h2{
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: auto 0;
+}
+.mainvisual h2 span{
+  font-size: 2.0rem;
+}
+.br{
+  display: none;
+}
+.mainvisual div{
+  width: 55%;
+  border: 1px solid #D0CECE;
+}
+.gallery{
+  padding: 0 0 60px;
+  margin: 0 100px;
+}
+.gallery h2{
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: #2A5E72;
+  text-align: center;
+  padding: 100px 0 50px;
+  border-top: 1px solid #D0CECE;
+}
+.gallery-list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.gallery-list li{
+  width: 25%;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.gallery-list li a{
+  display: inline-block;
+}
+.gallery-list li img{
+  border:  1px solid #4f4f4f;
+  border-bottom: 0px;
+  box-sizing: border-box;
+}
+.gallery-list li h3{
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #4f4f4f;
+  background-color: #FFFFFF;
+  padding: 10px 10px;
+  border: 1px solid #4f4f4f;
+}
+footer{
+  color: #2A5E72;
+  font-weight: 550;
+  background-color: #E9EEEF;
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid #D0CECE;
+}
+/*---------------------------------------------------------------------------------------*/
+.single-top{
+  padding: 170px 0 40px;
+  margin: 0 130px 50px;
+  border-bottom: 1px solid #D0CECE;
+}
+.single-mainvisual{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px
+}
+.mainvisual-pc{
+  width: 75%;
+  max-height: 100%;
+}
+.mainvisual-sp{
+  width: 22%;
+  max-height: 100%;
+}
+.top-name{
+  width: 100%;
+}
+.top-name h2{
+  font-size: 2.6rem;
+  font-weight: 550;
+  color: #2A5E72;
+  padding: 0 0 20px;
+}
+.top-name ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+.top-name ul li{
+  font-weight: 550;
+  color: #FFFFFF;
+  padding: 5px 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  background-color: #2A5E72;
+  border-radius: 10px;
+}
+.design{
+  max-width: 800px;
+  margin: 0 auto;
+}
+.design h3{
+  font-size: 2.0rem;
+  font-weight: 600;
+  color: #2A5E72;
+  padding-bottom: 30px;
+}
+.slider{
+  margin-bottom: 50px;
+}
+.design-description div{
+  padding-bottom: 50px;
+}
+.design-description div h3{
+  font-weight: 600;
+  color: #2A5E72;
+  border-bottom: 2px solid #2A5E72;
+  border-top: 2px solid #2A5E72;
+  padding: 0.4em 0.5em;
+  margin-bottom: 15px;
+}
+.design-description div p{
+  font-size: 1.6rem;
+  font-weight: 550;
+  line-height: 1.5;
+  padding: 0 0.5em;
+}
+@media(max-width:1000px){
+  .mainvisual,.single-top{
+    padding: 170px 0 50px;
+    margin: 0 90px 50px;
+  }
+  .mainvisual h2{
+    font-size: 2.4rem;
+    margin: auto auto;
+  }
+  .mainvisual h2 span{
+    font-size: 1.8rem;
+  }
+  .br{
+    display: block;
+  }
+  .span{
+    display: none;
+  }
+  .top-mainvisual{
+    margin-bottom: 30px;
+  }
+  .design{
+    padding: 0 50px;
+  }
+  .gallery{
+    padding: 0 0 50px;
+    margin: 0 90px;
+  }
+  .gallery-list li{
+    width: 33.3%;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+}
+@media(max-width:800px){
+  .header{
+    padding: 25px 20px;
+    height: auto;
+  }
+  .header h1{
+    font-size: 2.4rem;
+  }
+  .mainvisual,.single-top{
+    padding: 120px 0 30px;
+    margin: 0 25px 30px;
+  }
+  .design{
+    margin: 0 25px;
+    padding: 0;
+  }
+  .gallery{
+    padding: 0;
+    margin: 0 25px;
+  }
+  .gallery h2{
+    padding: 50px 0 30px;
+  }
+}
+@media(max-width:530px){
+  .mainvisual{
+    flex-flow: column-reverse;
+    padding: 120px 0 20px;
+  }
+  .mainvisual div{
+    width: 100%;
+  }
+  .mainvisual h2{
+    margin: 30px auto 0;
+  }
+  .br{
+    display: none;
+  }
+  .span{
+    display: inline-block;
+  }
+  .single-top{
+    padding: 120px 0 20px;
+  }
+  .top-main1{
+    display: none;
+  }
+  .top-main2{
+    width: 80%;
+    max-height: 80%;
+    margin: 0 auto;
+  }
+  .top-name h2{
+    font-size: 2.0rem;
+  }
+  .top-name ul li{
+    margin-bottom: 10px;
+  }
+  .design h3{
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  .gallery-list{
+    padding-bottom: 30px;
+  }
+  .gallery-list li{
+    width: 50%;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+  .gallery-list li h3{
+    text-align: left;
+  }
+}
+@media(max-width:400px){
+  .gallery-list{
+    padding-bottom: 30px;
+  }
+  .gallery-list li{
+    width: 100%;
+    margin: 0 0 30px;
+    padding: 0;
+    text-align: center;
+  }
+  .gallery-list li a{
+    width: 100%;
+  }
+  .gallery-list li img{
+    width: 100%;
+  }
+  .gallery-list li h3{
+    display: block;
+    text-align: left;
+  }
+  .mainvisual h2{
+    margin: 30px 0 0;
+  }
+  .br{
+    display: block;
+  }
+  .span{
+    display: none;
+  }
+}
+
+.nav-links{
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  line-height: 1;
+}
+.nav-links a{
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  background-color: #2A5E72;
+  color: #fff;
+  margin: 10px;
+}
+.nav-links span{
+  display: inline-block;
+  width: auto;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #2A5E72;
+  border: 2px solid #2A5E72;
+  margin: 10px;
+}
+/*---------------------------------------------------------------------------------------*/
+
+#error-name{
+  margin: auto;
+}
+.error-sorry{
+  font-size: 1.8rem;
+  text-align: center;
+  padding: 0 0 100px;
+}
+@media(max-width:1000px){
+  .error-sorry{
+    padding: 0 0 50px;
+  }
+}
+@media(max-width:800px){
+  .error-sorry{
+    padding: 0 0 30px;
+  }
+}
+.archive_tag{
+  padding: 130px 0 20px;
+  margin: 0 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.archive_tag li{
+  font-weight: 550;
+  color: #FFFFFF;
+  padding: 5px 15px;
+  margin: 0 10px 10px;
+  background-color: #2A5E72;
+  border-radius: 10px;
+}
+.archive main{
+  height: 90vh;
+}

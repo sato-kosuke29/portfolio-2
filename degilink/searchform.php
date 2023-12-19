@@ -1,0 +1,1 @@
+<?php echo do_shortcode('[searchandfilter fields="category_color,category_industry,category_site-type,category_design" headings="カラー,業種,サイト種別,デザイン"  type="checkbox,checkbox,checkbox,checkbox" order_by="id,id,id,id" submit_label="検索する"]'); ?>
